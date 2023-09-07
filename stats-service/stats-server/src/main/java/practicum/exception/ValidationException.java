@@ -1,4 +1,4 @@
-package exception;
+package practicum.exception;
 
 public class ValidationException extends RuntimeException {
     public ValidationException(String message) {

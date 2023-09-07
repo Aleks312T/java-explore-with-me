@@ -10,7 +10,7 @@
     <artifactId>main-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>service</name>
+    <name>Main</name>
     <url>http://maven.apache.org</url>
 
     <properties>

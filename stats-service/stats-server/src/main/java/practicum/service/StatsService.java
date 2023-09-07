@@ -1,4 +1,4 @@
-package service;
+package practicum.service;
 
 import statsDto.HitDto;
 import statsDto.StatsDto;

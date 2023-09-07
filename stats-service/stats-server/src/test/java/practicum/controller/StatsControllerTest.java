@@ -1,18 +1,16 @@
-package controller;
+package practicum.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import exception.ValidationException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import service.StatsService;
+import practicum.exception.ValidationException;
+import practicum.service.StatsService;
 import statsDto.HitDto;
 import statsDto.StatsDto;
 import utils.TimeFormatUtil;
@@ -30,8 +28,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-//@WebMvcTest(controllers = StatsController.class)
-@SpringBootTest(classes = StatsControllerTest.class)
+@WebMvcTest(controllers = StatsController.class)
 class StatsControllerTest {
     private final HitDto hitDtoTest = HitDto.builder().app("appHit").uri("uriHit").ip("Hit")
             .timestamp(LocalDateTime.now().format(TimeFormatUtil.TIMESTAMP_FORMATTER)).build();
@@ -83,7 +80,7 @@ class StatsControllerTest {
         String end = "2023-07-20 21:39:31";
 
         when(statsService.getStats(any(), any(), any(), anyBoolean())).thenThrow(
-                new ValidationException("Start can't be later than the end."));
+                new ValidationException("Начало промежутка не может быть позже конца."));
 
         mvc.perform(get("/stats")
                         .param("start", start)
@@ -91,6 +88,6 @@ class StatsControllerTest {
                         .param("unique", "false")
                         .accept(MediaType.APPLICATION_JSON)
                 ).andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.error", is("Start can't be later than the end.")));
+                .andExpect(jsonPath("$.error", is("Начало промежутка не может быть позже конца.")));
     }
 }
