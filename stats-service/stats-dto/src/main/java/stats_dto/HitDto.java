@@ -1,4 +1,4 @@
-package statsDto;
+package stats_dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

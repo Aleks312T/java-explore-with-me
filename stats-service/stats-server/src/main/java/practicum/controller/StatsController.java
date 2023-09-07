@@ -6,8 +6,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import practicum.exception.ValidationException;
 import practicum.service.StatsService;
-import statsDto.HitDto;
-import statsDto.StatsDto;
+import stats_dto.HitDto;
+import stats_dto.StatsDto;
 import utils.TimeFormatUtil;
 
 import javax.validation.Valid;

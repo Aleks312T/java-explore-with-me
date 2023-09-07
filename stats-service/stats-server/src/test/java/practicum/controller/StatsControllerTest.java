@@ -11,8 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import practicum.exception.ValidationException;
 import practicum.service.StatsService;
-import statsDto.HitDto;
-import statsDto.StatsDto;
+import stats_dto.HitDto;
+import stats_dto.StatsDto;
 import utils.TimeFormatUtil;
 
 import java.nio.charset.StandardCharsets;
