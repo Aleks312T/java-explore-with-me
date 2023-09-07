@@ -2,7 +2,6 @@ package practicum.model;
 
 import lombok.experimental.UtilityClass;
 import statsDto.HitDto;
-
 import java.time.LocalDateTime;
 
 import static utils.TimeFormatUtil.TIMESTAMP_FORMATTER;
