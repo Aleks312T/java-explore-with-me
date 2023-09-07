@@ -1,10 +1,10 @@
 package practicum.model;
 
 import lombok.experimental.UtilityClass;
-import stats_dto.HitDto;
+import ru.practicum.statsdto.HitDto;
 import java.time.LocalDateTime;
 
-import static utils.TimeFormatUtil.TIMESTAMP_FORMATTER;
+import static ru.practicum.utils.TimeFormatUtil.TIMESTAMP_FORMATTER;
 
 @UtilityClass
 public class StatsMapper {

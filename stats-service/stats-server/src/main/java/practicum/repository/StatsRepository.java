@@ -3,7 +3,7 @@ package practicum.repository;
 import practicum.model.Stats;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import stats_dto.StatsDto;
+import ru.practicum.statsdto.StatsDto;
 
 import java.time.LocalDateTime;
 import java.util.List;

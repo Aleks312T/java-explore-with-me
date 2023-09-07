@@ -1,4 +1,4 @@
-package utils;
+package ru.practicum.utils;
 
 import lombok.experimental.UtilityClass;
 

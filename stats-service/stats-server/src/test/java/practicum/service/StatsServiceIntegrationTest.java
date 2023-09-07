@@ -5,9 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import stats_dto.HitDto;
-import stats_dto.StatsDto;
-import utils.TimeFormatUtil;
+import ru.practicum.statsdto.HitDto;
+import ru.practicum.statsdto.StatsDto;
+import ru.practicum.utils.TimeFormatUtil;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.DefaultUriBuilderFactory;
-import stats_dto.HitDto;
-import utils.TimeFormatUtil;
+import ru.practicum.statsdto.HitDto;
+import ru.practicum.utils.TimeFormatUtil;
 
 import java.time.LocalDateTime;
 import java.util.Collections;

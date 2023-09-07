@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import practicum.model.Stats;
 import practicum.model.StatsMapper;
 import practicum.repository.StatsRepository;
-import stats_dto.HitDto;
-import stats_dto.StatsDto;
+import ru.practicum.statsdto.HitDto;
+import ru.practicum.statsdto.StatsDto;
 
 import java.time.LocalDateTime;
 import java.util.List;

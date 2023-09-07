@@ -1,7 +1,7 @@
 package practicum.service;
 
-import stats_dto.HitDto;
-import stats_dto.StatsDto;
+import ru.practicum.statsdto.HitDto;
+import ru.practicum.statsdto.StatsDto;
 
 import java.time.LocalDateTime;
 import java.util.List;
