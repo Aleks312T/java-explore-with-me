@@ -22,7 +22,7 @@ public class StatsController {
 
     @PostMapping("/hit")
     public HitDto hit(@Valid @RequestBody HitDto hitDto) {
-        log.info("hit stats {}", hitDto);
+        log.info("hit {}", hitDto);
         return statsService.hit(hitDto);
     }
 
