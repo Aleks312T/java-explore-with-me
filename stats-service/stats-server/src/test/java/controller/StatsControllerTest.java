@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import service.StatsService;
@@ -29,8 +30,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = StatsController.class)
-//@SpringBootTest(classes = StatsControllerTest.class)
+//@WebMvcTest(controllers = StatsController.class)
+@SpringBootTest(classes = StatsControllerTest.class)
 class StatsControllerTest {
     private final HitDto hitDtoTest = HitDto.builder().app("appHit").uri("uriHit").ip("Hit")
             .timestamp(LocalDateTime.now().format(TimeFormatUtil.TIMESTAMP_FORMATTER)).build();
