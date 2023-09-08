@@ -3,6 +3,7 @@ package practicum.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import practicum.model.Stats;
 import practicum.model.StatsMapper;
 import practicum.repository.StatsRepository;
@@ -18,6 +19,7 @@ import java.util.List;
 public class StatsServiceImpl implements StatsService {
     private final StatsRepository statsRepository;
 
+    @Transactional
     @Override
     public HitDto hit(HitDto hitDto) {
         Stats stats = statsRepository.save(StatsMapper.toStats(hitDto));
@@ -26,6 +28,7 @@ public class StatsServiceImpl implements StatsService {
         return StatsMapper.toHitDto(stats);
     }
 
+    @Transactional(readOnly  = true)
     @Override
     public List<StatsDto> getStats(LocalDateTime start, LocalDateTime end, List<String> uris, Boolean unique) {
         List<StatsDto> statsDtos;

@@ -4,7 +4,8 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -27,16 +28,4 @@ public class Stats {
 
     @Column(name = "created_date", nullable = false)
     private LocalDateTime timestamp;
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof Stats)) return false;
-        return id != null && id.equals(((Stats) obj).getId());
-    }
 }
