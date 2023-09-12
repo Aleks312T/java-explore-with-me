@@ -50,7 +50,7 @@ class StatsControllerTest {
                         .characterEncoding(StandardCharsets.UTF_8)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
-                ).andExpect(status().isOk())
+                ).andExpect(status().isCreated())
                 .andExpect(jsonPath("$.app", is(hitDtoTest.getApp())))
                 .andExpect(jsonPath("$.uri", is(hitDtoTest.getUri())))
                 .andExpect(jsonPath("$.ip", is(hitDtoTest.getIp())));

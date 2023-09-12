@@ -29,6 +29,7 @@ public class StatsClient extends BaseClient {
     }
 
     public ResponseEntity<Object> hit(HitDto hitDto) {
+        log.info("StatsClient hit: {}", hitDto);
         return post(hitDto);
     }
 
@@ -43,7 +44,7 @@ public class StatsClient extends BaseClient {
             throw new IllegalArgumentException("Начало промежутка не может быть позже конца.");
         }
 
-        log.info("StatsClient getStats: start: {}, end: {}, uris: {}, unique: {}", start, end, uris, unique);
+        log.info("StatsClient getStats: \nstart: {}, end: {}, uris: {}, unique: {}", start, end, uris, unique);
 
         Map<String, Object> parameters = Map.of(
                 "start", start.format(TimeFormatUtil.TIMESTAMP_FORMATTER),
