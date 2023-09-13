@@ -15,6 +15,9 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 public class Compilation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(nullable = false, length = CompilationSizeConstants.TITLE_SIZE_MAX)
     String title;
     @Column(nullable = false)
@@ -24,7 +27,4 @@ public class Compilation {
             joinColumns = @JoinColumn(name = "compilation_id"),
             inverseJoinColumns = @JoinColumn(name = "event_id"))
     Set<Event> events;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 }

@@ -1,7 +1,6 @@
 package ru.practicum.event.service;
 
 import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.types.Predicate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
@@ -22,9 +21,10 @@ import ru.practicum.error.exception.ValidationEwmException;
 import ru.practicum.event.dto.*;
 import ru.practicum.event.mapper.EventMapper;
 import ru.practicum.event.model.Event;
-import ru.practicum.event.repository.EventRepository;
+import ru.practicum.event.model.QEvent;
 import ru.practicum.event.model.enums.EventState;
 import ru.practicum.event.model.enums.StateActionForUser;
+import ru.practicum.event.repository.EventRepository;
 import ru.practicum.location.mapper.LocationMapper;
 import ru.practicum.location.model.Location;
 import ru.practicum.location.repository.LocationRepository;
@@ -191,51 +191,49 @@ public class EventServiceImpl implements EventService {
                                                        String rangeStart, String rangeEnd, Boolean onlyAvailable,
                                                        String sort, Integer from, Integer size,
                                                        HttpServletRequest request) {
-//        log.info("EVENT SERVICE: get Public events text: {}, categories: {}, paid = {}, rangeStart: {}, rangeEnd: {}," +
-//                        "onlyAvailable = {}, sort = {}, from = {}, size = {}, request = {}",
-//                text, categories, paid, rangeStart, rangeEnd, onlyAvailable, sort, from, size, request);
-//
-//        Sort sortOrder = Sort.by(Sort.Direction.ASC, "eventDate");
-//        Pageable pageable = PageRequest.of(from / size, size, sortOrder);
-//
-//        LocalDateTime startDate =
-//                rangeStart != null ? LocalDateTime.parse(rangeStart, TIMESTAMP_FORMATTER) : LocalDateTime.now();
-//        LocalDateTime endDate =
-//                rangeEnd != null ? LocalDateTime.parse(rangeEnd, TIMESTAMP_FORMATTER) : LocalDateTime.now().plusYears(100);
-//
-//        if (startDate.isAfter(endDate)) {
-//            throw new ValidationEwmException("The start date of the search cannot be later than the end date");
-//        }
-//
-//        // создание Predicate для Querydsl
-//        BooleanBuilder builder = new BooleanBuilder();
-//        Optional.ofNullable(text).ifPresent(t -> builder.and(QEvent.event.annotation.likeIgnoreCase(t)
-//                .or(QEvent.event.description.likeIgnoreCase(t))));
-//        Optional.ofNullable(categories).ifPresent(c -> builder.and(QEvent.event.category.id.in(c)));
-//        Optional.ofNullable(paid).ifPresent(p -> builder.and(QEvent.event.paid.eq(p)));
-//        builder.and(QEvent.event.state.eq(EventState.PUBLISHED));
-//        builder.and(QEvent.event.eventDate.between(startDate, endDate));
-//
-//        List<Event> events = eventRepository.findAll(builder.getValue(), pageable).getContent();
-//
-//        eventStatsClient.addHit(request);
-//
-//        Map<Long, Long> confirmedRequestsPerEvent = getConfirmedRequestsPerEvent(events);
-//        Map<Long, Long> viewsPerEvent = eventStatsClient.getViewsPerEvent(events);
-//
-//        List<EventShortResponseDto> result = events.stream()
-//                .map(event -> EventMapper.toEventShortDto(
-//                        event,
-//                        confirmedRequestsPerEvent.getOrDefault(event.getId(), 0L),
-//                        viewsPerEvent.getOrDefault(event.getId(), 0L)))
-//                .collect(Collectors.toList());
-//
-//        if ("VIEWS".equals(sort)) {
-//            result.sort(Comparator.comparing(dto -> viewsPerEvent.getOrDefault(dto.getId(), 0L)));
-//        }
-//        return result;
+        log.info("EVENT SERVICE: get Public events text: {}, categories: {}, paid = {}, rangeStart: {}, rangeEnd: {}," +
+                        "onlyAvailable = {}, sort = {}, from = {}, size = {}, request = {}",
+                text, categories, paid, rangeStart, rangeEnd, onlyAvailable, sort, from, size, request);
 
-        return null;
+        Sort sortOrder = Sort.by(Sort.Direction.ASC, "eventDate");
+        Pageable pageable = PageRequest.of(from / size, size, sortOrder);
+
+        LocalDateTime startDate =
+                rangeStart != null ? LocalDateTime.parse(rangeStart, TIMESTAMP_FORMATTER) : LocalDateTime.now();
+        LocalDateTime endDate =
+                rangeEnd != null ? LocalDateTime.parse(rangeEnd, TIMESTAMP_FORMATTER) : LocalDateTime.now().plusYears(100);
+
+        if (startDate.isAfter(endDate)) {
+            throw new ValidationEwmException("The start date of the search cannot be later than the end date");
+        }
+
+        // создание Predicate для Querydsl
+        BooleanBuilder builder = new BooleanBuilder();
+        Optional.ofNullable(text).ifPresent(t -> builder.and(QEvent.event.annotation.likeIgnoreCase(t)
+                .or(QEvent.event.description.likeIgnoreCase(t))));
+        Optional.ofNullable(categories).ifPresent(c -> builder.and(QEvent.event.category.id.in(c)));
+        Optional.ofNullable(paid).ifPresent(p -> builder.and(QEvent.event.paid.eq(p)));
+        builder.and(QEvent.event.state.eq(EventState.PUBLISHED));
+        builder.and(QEvent.event.eventDate.between(startDate, endDate));
+
+        List<Event> events = eventRepository.findAll(builder.getValue(), pageable).getContent();
+
+        eventStatsClient.addHit(request);
+
+        Map<Long, Long> confirmedRequestsPerEvent = getConfirmedRequestsPerEvent(events);
+        Map<Long, Long> viewsPerEvent = eventStatsClient.getViewsPerEvent(events);
+
+        List<EventShortResponseDto> result = events.stream()
+                .map(event -> EventMapper.toEventShortDto(
+                        event,
+                        confirmedRequestsPerEvent.getOrDefault(event.getId(), 0L),
+                        viewsPerEvent.getOrDefault(event.getId(), 0L)))
+                .collect(Collectors.toList());
+
+        if ("VIEWS".equals(sort)) {
+            result.sort(Comparator.comparing(dto -> viewsPerEvent.getOrDefault(dto.getId(), 0L)));
+        }
+        return result;
     }
 
     @Override
