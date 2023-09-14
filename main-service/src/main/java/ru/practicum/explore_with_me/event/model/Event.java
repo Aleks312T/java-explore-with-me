@@ -36,15 +36,6 @@ public class Event {
     @JoinColumn(name = "category_id")
     Category category;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
-    String description;
-
-    @Column(name = "created_date", nullable = false)
-    LocalDateTime createdOn;
-
-    @Column(name = "event_date", nullable = false)
-    LocalDateTime eventDate;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "user_id")
@@ -53,6 +44,15 @@ public class Event {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id")
     Location location;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    String description;
+
+    @Column(name = "created_date", nullable = false)
+    LocalDateTime createdOn;
+
+    @Column(name = "event_date", nullable = false)
+    LocalDateTime eventDate;
 
     @Column(nullable = false)
     Boolean paid;
