@@ -10,18 +10,19 @@ services:
       - stats-db
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://stats-db:5432/stats
-      - SPRING_DATASOURCE_USER=postgres
-      - SPRING_DATASOURCE_PASSWORD=iamroot
+      - SPRING_DATASOURCE_USER=root
+      - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_DRIVER_CLASS_NAME=org.postgresql.Driver
 
   stats-db:
     image: postgres:14-alpine
+    container_name: stats-db
     ports:
-      - "6541:5432"
+      - "6542:5432"
     environment:
       - POSTGRES_DB=stats
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=iamroot
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
 
   ewm-service:
     build: main-service
@@ -34,16 +35,17 @@ services:
       - stats-server
     environment:
       - STATS_SERVER_URL=http://stats-server:9090
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:7654/explore_with_me
-      - SPRING_DATASOURCE_USER=postgres
-      - SPRING_DATASOURCE_PASSWORD=iamroot
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:5432/explore_with_me
+      - SPRING_DATASOURCE_USER=root
+      - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_DRIVER_CLASS_NAME=org.postgresql.Driver
 
   ewm-db:
     image: postgres:14-alpine
+    container_name: ewm-db
     ports:
-      - "8765:7654"
+      - "6541:5432"
     environment:
       - POSTGRES_DB=explore_with_me
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=iamroot
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
