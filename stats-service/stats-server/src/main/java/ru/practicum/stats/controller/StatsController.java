@@ -29,13 +29,21 @@ public class StatsController {
     }
 
     @GetMapping("/stats")
-    public List<StatsDto> getStats(@RequestParam @DateTimeFormat(pattern = TimeFormatUtil.TIMESTAMP_FORMAT)
+    public List<StatsDto> getStats(@RequestParam(required = false)
+                                   @DateTimeFormat(pattern = TimeFormatUtil.TIMESTAMP_FORMAT)
                                        LocalDateTime start,
-                                   @RequestParam @DateTimeFormat(pattern = TimeFormatUtil.TIMESTAMP_FORMAT)
+                                   @RequestParam(required = false)
+                                   @DateTimeFormat(pattern = TimeFormatUtil.TIMESTAMP_FORMAT)
                                        LocalDateTime end,
                                    @RequestParam(required = false) List<String> uris,
                                    @RequestParam(defaultValue = "false") boolean unique
     ) {
+        if (start == null) {
+            throw new ValidationException("Отсутствует параметр start");
+        }
+        if (end == null) {
+            throw new ValidationException("Отсутствует параметр end");
+        }
         if (start.isAfter(end)) {
             throw new ValidationException("Начало промежутка не может быть позже конца.");
         }
