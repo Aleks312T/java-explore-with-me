@@ -1,4 +1,4 @@
-package practicum.service;
+package ru.practicum.stats.service;
 
 import ru.practicum.statsdto.HitDto;
 import ru.practicum.statsdto.StatsDto;

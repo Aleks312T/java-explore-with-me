@@ -1,10 +1,11 @@
-package practicum.service;
+package ru.practicum.stats.service;
 
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import ru.practicum.stats.service.StatsService;
 import ru.practicum.statsdto.HitDto;
 import ru.practicum.statsdto.StatsDto;
 import ru.practicum.utils.TimeFormatUtil;

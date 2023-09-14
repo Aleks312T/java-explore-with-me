@@ -1,12 +1,12 @@
-package practicum.controller;
+package ru.practicum.stats.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import practicum.exception.ValidationException;
-import practicum.service.StatsService;
+import ru.practicum.stats.exception.ValidationException;
+import ru.practicum.stats.service.StatsService;
 import ru.practicum.statsdto.HitDto;
 import ru.practicum.statsdto.StatsDto;
 import ru.practicum.utils.TimeFormatUtil;

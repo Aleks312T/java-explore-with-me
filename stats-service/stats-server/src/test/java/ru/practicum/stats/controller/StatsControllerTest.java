@@ -1,4 +1,4 @@
-package practicum.controller;
+package ru.practicum.stats.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
@@ -9,8 +9,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import practicum.exception.ValidationException;
-import practicum.service.StatsService;
+import ru.practicum.stats.controller.StatsController;
+import ru.practicum.stats.exception.ValidationException;
+import ru.practicum.stats.service.StatsService;
 import ru.practicum.statsdto.HitDto;
 import ru.practicum.statsdto.StatsDto;
 import ru.practicum.utils.TimeFormatUtil;

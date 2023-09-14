@@ -1,6 +1,6 @@
-package practicum.exception;
+package ru.practicum.stats.exception;
 
-import practicum.controller.StatsController;
+import ru.practicum.stats.controller.StatsController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;

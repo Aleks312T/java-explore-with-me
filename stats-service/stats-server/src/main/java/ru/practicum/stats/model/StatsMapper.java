@@ -1,4 +1,4 @@
-package practicum.model;
+package ru.practicum.stats.model;
 
 import lombok.experimental.UtilityClass;
 import ru.practicum.statsdto.HitDto;

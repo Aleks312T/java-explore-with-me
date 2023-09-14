@@ -1,4 +1,4 @@
-package ru.practicum;
+package ru.practicum.stats_client;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.DefaultUriBuilderFactory;
+import ru.practicum.stats_client.BaseClient;
 import ru.practicum.statsdto.HitDto;
 import ru.practicum.utils.TimeFormatUtil;
 
@@ -31,7 +32,7 @@ public class StatsClient extends BaseClient {
     }
 
     public ResponseEntity<Object> hit(HitDto hitDto) {
-        log.info("ru.practicum.StatsClient hit: {}", hitDto);
+        log.info("ru.practicum.stats_client.StatsClient hit: {}", hitDto);
         return post(hitDto);
     }
 
@@ -46,7 +47,7 @@ public class StatsClient extends BaseClient {
             throw new IllegalArgumentException("Начало промежутка не может быть позже конца.");
         }
 
-        log.info("ru.practicum.StatsClient getStats: \nstart: {}, end: {}, uris: {}, unique: {}", start, end, uris, unique);
+        log.info("ru.practicum.stats_client.StatsClient getStats: \nstart: {}, end: {}, uris: {}, unique: {}", start, end, uris, unique);
 
         Map<String, Object> parameters = Map.of(
                 "start", start.format(TimeFormatUtil.TIMESTAMP_FORMATTER),

@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import ru.practicum.StatsClient;
+import ru.practicum.stats_client.StatsClient;
 import ru.practicum.explore_with_me.error.exception.GettingStatisticsEwmException;
 import ru.practicum.explore_with_me.event.model.Event;
 import ru.practicum.statsdto.HitDto;

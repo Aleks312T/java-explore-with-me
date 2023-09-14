@@ -1,4 +1,4 @@
-package practicum.exception;
+package ru.practicum.stats.exception;
 
 public class ErrorResponse {
     final String error;

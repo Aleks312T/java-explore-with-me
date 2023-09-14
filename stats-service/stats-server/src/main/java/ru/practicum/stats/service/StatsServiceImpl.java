@@ -1,12 +1,12 @@
-package practicum.service;
+package ru.practicum.stats.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import practicum.model.Stats;
-import practicum.model.StatsMapper;
-import practicum.repository.StatsRepository;
+import ru.practicum.stats.model.Stats;
+import ru.practicum.stats.model.StatsMapper;
+import ru.practicum.stats.repository.StatsRepository;
 import ru.practicum.statsdto.HitDto;
 import ru.practicum.statsdto.StatsDto;
 
