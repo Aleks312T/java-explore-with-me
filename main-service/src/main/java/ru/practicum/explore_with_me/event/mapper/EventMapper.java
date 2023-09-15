@@ -86,7 +86,10 @@ public class EventMapper {
                 .build();
     }
 
-    public static EventFullResponseDto toEventFullDto(Event event, long confirmedRequests, long views, List<CommentShortResponseDto> comments) {
+    public static EventFullResponseDto toEventFullDto(Event event,
+                                                      long confirmedRequests,
+                                                      long views,
+                                                      List<CommentShortResponseDto> comments) {
         return EventFullResponseDto.builder()
                 .annotation(event.getAnnotation())
                 .category(CategoryMapper.toCategoryDto(event.getCategory()))
