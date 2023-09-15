@@ -8,35 +8,8 @@ import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
-import ru.practicum.explore_with_me.category.controller.CategoryAdminController;
-import ru.practicum.explore_with_me.category.controller.CategoryPublicController;
-import ru.practicum.explore_with_me.comment.controller.CommentAdminController;
-import ru.practicum.explore_with_me.comment.controller.CommentPrivateController;
-import ru.practicum.explore_with_me.comment.controller.CommentPublicController;
-import ru.practicum.explore_with_me.compilation.controller.CompilationAdminController;
-import ru.practicum.explore_with_me.compilation.controller.CompilationPublicController;
 import ru.practicum.explore_with_me.error.exception.*;
-import ru.practicum.explore_with_me.event.controller.EventAdminController;
-import ru.practicum.explore_with_me.event.controller.EventPrivateController;
-import ru.practicum.explore_with_me.event.controller.EventPublicController;
-import ru.practicum.explore_with_me.request.controller.RequestPrivateController;
-import ru.practicum.explore_with_me.user.controller.UserAdminController;
 
-@RestControllerAdvice(assignableTypes = {
-        CategoryPublicController.class,
-        CategoryAdminController.class,
-        CompilationAdminController.class,
-        CompilationPublicController.class,
-        EventAdminController.class,
-        EventPublicController.class,
-        EventPrivateController.class,
-        RequestPrivateController.class,
-        UserAdminController.class,
-        CommentAdminController.class,
-        CommentPrivateController.class,
-        CommentPublicController.class
-})
 @Slf4j
 public class ErrorHandler {
     @ExceptionHandler
